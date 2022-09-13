@@ -19,7 +19,7 @@ Then instantiate the app <br />
 app = FastAPI() <br />
 Then, specify the end point for the function. <br />
 To run the app one important thing,unicorn capabilities need to be installed as it helps in running the script .<br />
-unicorn main:app --reload <br />
+uvicorn main:app --reload <br />
 
 
 
