@@ -43,6 +43,41 @@ We will see the app starts with logs being shown in command prompt <br />
 if we pass in a string after the / in the browser.We will see the output being prompted <br />
 ![alt text](https://github.com/AbhiLegend/flask2fastapi/blob/main/images/6.PNG) <br />
 We will see the output.Similarly other folders are to be explored and we can run the code accordingly <br />
+## Explanation of the code as shown in Flask in Lesson 5 :Model reporting and monitoring <br />
+### 3.Configuring API <br />
+#### Demo <br />
+The solution is under the user subfolder
+You can configure an main4.py script as follows: <br />
+First, import capabilities from the FAST API module: <br />
+```
+from fastapi import FastAPI
+
+```
+Then, instantiate the app: <br />
+```
+app = FastAPI()
+```
+Then, specify an endpoint with its own function: <br />
+```
+@app.get("/{user}")
+def index(user):
+    return "Hello " + user
+
+```
+Finally, run the app using command line 
+```
+uvicorn main4:app --reload
+
+```
+
+
+
+
+
+
+
+
+
 
 
 
