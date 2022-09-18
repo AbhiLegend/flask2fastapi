@@ -70,6 +70,41 @@ uvicorn main4:app --reload
 
 ```
 
+## 6.Solution: API Configuration <br />
+The solution is there in the user subfolder <br />
+### Setting up main4.py <br />
+Your main4.py script should start by importing the FASTAPI modules <br />
+On the second line, you can use the FASTAPI method to construct your app, as follow <br />
+```
+from fastapi import FastAPI
+
+app = FastAPI()
+
+```
+### A simple endpoint <br />
+You can specify a route for a default endpoint as follows: <br />
+```
+@app.get("/{user}")
+```
+The @app.get("/") tells FastAPI that the function right below is in charge of handling requests that go to: <br />
+
+the path /  <br />
+using a get operation <br />
+
+Then, you can define your index() function .your function should return a simple string that says "Hello" to whatever name the user has specified as a query string, as follows: <br />
+```
+    return "Hello " + user
+
+```
+
+The complete code is inside users subfolder <br />
+The main4.py script. <br />
+
+
+
+
+
+
 
 
 
