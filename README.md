@@ -69,6 +69,8 @@ Finally, run the app using command line
 uvicorn main4:app --reload
 
 ```
+When we run it in cmd prompt in windows we get the following result in browser after going to localhost:8000/<apiendpoint> <br />
+    
 
 ## 6.Solution: API Configuration <br />
 The solution is there in the user subfolder <br />
@@ -99,6 +101,7 @@ Then, you can define your index() function .your function should return a simple
 
 The complete code is inside users subfolder <br />
 The main4.py script. <br />
+
 
 ## 7.Endpoint Scripting <br />
 ### Summary <br />
@@ -139,6 +142,11 @@ Finally, run the app,from the command line key in the command the python script 
 
 uvicorn main:app --reload
 ```
+The output when the user "Bradford" is found <br />
+![alt text](https://github.com/AbhiLegend/flask2fastapi/blob/main/images/usertrue.PNG) <br /> 
+The output when the use "Bradford" is not found as in the browser <br />
+![alt text](https://github.com/AbhiLegend/flask2fastapi/blob/main/images/userfalse.PNG) <br /> 
+
 ## 9.Exercise:Endpint scripting
 All the files associated with this exercise is in medians folder <br />
 Configuring an API is only the first step to having a useful API. After configuration, you need to write scripts for endpoints that can provide useful information<br />
@@ -157,6 +165,9 @@ Your "size" endpoint needs to start with a line that specifies the app route (th
 Your endpoint needs a function, that you can call size(). This function should read a query string from the API user called "filename". Then, your function should<br />call the readpandas() function you created previously, passing the filename as the argument to this function. This will enable you to get the Dataframe <br />specified by the filename. <br />
 
 Finally, you need to add a return statement to your size() function. It should return the number of rows of the pandas DataFrame the function read. <br />
+    
+This is how the median output looks like in browser <br />
+ ![alt text](https://github.com/AbhiLegend/flask2fastapi/blob/main/images/medians1.PNG) <br /> 
 
 ### Instructions - Summary Endpoint
 Next, you can write a "summary" endpoint that enables users to check the summary statistics - in this case the mean of each column of a dataset. <br />
@@ -200,6 +211,10 @@ To run the app in the command line we key in the following command <br />
 ```
 uvicorn main3:app --reload
 ```
+This is how the summary out put looks in browser
+![alt text](https://github.com/AbhiLegend/flask2fastapi/blob/main/images/Summary1.PNG) <br /> 
+![alt text](https://github.com/AbhiLegend/flask2fastapi/blob/main/images/Summary2.PNG) <br /> 
+![alt text](https://github.com/AbhiLegend/flask2fastapi/blob/main/images/Summary3.PNG) <br /> 
 
 ## 17.Exercise :Full reporting pipeline
 The entire code and supporting files for the exercise is there in the pickle subfolder <br />
@@ -265,6 +280,8 @@ To run the code in the command line we key in the command <br />
 ```
 uvicorn main2:app --reload
 ```
+This is how the output looks like in browser.
+![alt text](https://github.com/AbhiLegend/flask2fastapi/blob/main/images/prediction1.PNG) <br /> 
 
 That's all about all the code from flask to fastapi. <br />
 
