@@ -196,6 +196,81 @@ def summary(filename):
     thedata=readpandas(filename)
     return str(thedata.mean(axis=1))
 ```
+To run the app in the command line we key in the following command <br />
+```
+uvicorn main3:app --reload
+```
+
+## 17.Exercise :Full reporting pipeline
+The entire code and supporting files for the exercise is there in the pickle subfolder <br />
+First, you'll configure a new API. This API will have a new app configuration file that you can call main2.py. <br />
+
+Second, you'll write a new endpoint for the API. This new endpoint will read a pickle file for a deployed model, and it will also read a dataset. It will use the<br />deployed pickle file to make predictions for the dataset, and it will return the prediction it makes. <br />
+#### nstructions - API configuration
+You should configure your new API by writing a script called main2.py. <br />
+
+The main2.py script should follow the same configuration instructions as our previously configured API app files: <br />
+import the needed methods from the fASTAPI module <br />
+construct an app with a construction method from FASTAPI <br />
+specify an endpoint route called '/prediction', intended to provide model predictions <br />
+Use command line utility to run the app <br />
+After you've complete the basic configuration, you'll be ready to script the prediction endpoint (see next step). <br />
+### Instructions - Scripting the prediction Endpoint
+
+Your endpoint called '/prediction' should include a function called predict(), that you will define. Your predict()function should do all of the following: <br />
+
+read the pickle file called deployedmodel.pkl from the /L5 directory of your workspace <br />
+read the dataset called predictiondata.csv from the /L5directory of your workspace <br />
+use the deployedmodel.pkl pickle file to make predictions for the predictiondata.csv dataset <br />
+return the prediction <br />
+After you write the code for this endpoint, you'll be ready to call the endpoint and check the predicted value. <br />
+## 18. Solution:Full Reporting pipeline
+All the required files are in the pickle subfolder <br />
+### API configuration
+You can configure the API by importing the FAST API methods from FASTAPI  module, as follows: <br />
+```
+import pandas as pd
+import pickle
+from fastapi import FastAPI
+```
+Then instantiate the app
+```
+app = FastAPI()
+```
+
+You can create the prediction endpoint by using the '@' character to specify the '/prediction' route, and defining a function as follows: <br />
+
+```
+@app.get('/prediction')
+def prediction():
+```
+We also need to read the file that is csv using the pandas method <br />
+```
+def readpandas(filename):
+    thedata=pd.read_csv(filename)
+    return thedata
+```
+
+Here is the code for the prediction function <br />
+```
+@app.get('/prediction')
+def prediction():
+    thedata=pd.read_csv('predictiondata.csv')
+    with open('deployedmodel.pkl', 'rb') as file:
+        themodel = pickle.load(file)
+    prediction=themodel.predict(thedata)
+    return str(prediction)
+```
+To run the code in the command line we key in the command <br />
+```
+uvicorn main2:app --reload
+```
+
+That's all about all the code from flask to fastapi. <br />
+
+
+
+
 
 
 
