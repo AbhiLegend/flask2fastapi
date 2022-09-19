@@ -100,6 +100,53 @@ Then, you can define your index() function .your function should return a simple
 The complete code is inside users subfolder <br />
 The main4.py script. <br />
 
+## 7.Endpoint Scripting <br />
+### Summary <br />
+Start by reading relevant modules: <br />
+```
+import pandas as pd
+from fastapi import FastAPI
+```
+Then, instantiate your app with the FASTAP() call <br />
+```
+app = FastAPI()
+```
+Create a function that will read and return files. We can call this function an auxiliary function, or in other words, a helper function: <br />
+
+```
+def readpandas(filename):
+    thedata=pd.read_csv(filename)
+    return thedata
+```
+Specify our first endpoint, with a default route: <br />
+
+```
+@app.get("/{user}")
+def index(user):
+    return str(user=='Bradford') + '\n'
+```
+Now, the most important part: specify another endpoint, with a different route, that accomplishes another, more complex task: <br />
+```
+@app.get("/medians/{filename}")
+def summary(filename):
+    thedata=readpandas(filename)
+    return str(thedata.median(axis=0))
+```
+
+Finally, run the app,from the command line key in the command the python script is named as main.py and it is there in the median sub folder <br />
+
+```
+
+uvicorn main:app --reload
+```
+
+
+
+
+
+
+
+
 
 
 
