@@ -139,6 +139,65 @@ Finally, run the app,from the command line key in the command the python script 
 
 uvicorn main:app --reload
 ```
+## 9.Exercise:Endpint scripting
+All the files associated with this exercise is in medians folder <br />
+Configuring an API is only the first step to having a useful API. After configuration, you need to write scripts for endpoints that can provide useful information<br />
+to you and other users of the API.<br />
+
+In this exercise, you'll write scripts for API endpoints so they can provide useful information about data. <br />
+### Instructions: Function for Reading Data 
+he first thing you need to add to your main3.py script is a function for reading data. <br />
+You can call your function readpandas(). It should take a filename string as its input. It should use a pandas method to read a CSV whose filename is given by the <br /> function input. It should return the DataFrame that it read. <br />
+### Instructions: Size Endpoint
+
+Next, you can write a "size" endpoint that enables users to check the size of a dataset. <br />
+
+Your "size" endpoint needs to start with a line that specifies the app route (the route should be called '/size'). <br />
+
+Your endpoint needs a function, that you can call size(). This function should read a query string from the API user called "filename". Then, your function should<br />call the readpandas() function you created previously, passing the filename as the argument to this function. This will enable you to get the Dataframe <br />specified by the filename. <br />
+
+Finally, you need to add a return statement to your size() function. It should return the number of rows of the pandas DataFrame the function read. <br />
+
+### Instructions - Summary Endpoint
+Next, you can write a "summary" endpoint that enables users to check the summary statistics - in this case the mean of each column of a dataset. <br />
+
+Your "summary" endpoint needs to start with a line that specifies the app route (the route should be called '/summary'). <br />
+
+Your endpoint needs a function, that you can call summary(). This function should read a query string from the API user called "filename". Then, your function <br />should call the readpandas() function you created previously, passing the filename as the argument to this function. This will enable you to get the Dataframe <br /> specified by the filename. <br />
+
+You need to add a return statement to your summary() function. It should return the mean of the column of the pandas DataFrame the function read. <br />
+
+Finally, you should test your summary() function. There's a dataset in the /L5 directory of your workspace called testdata.csv. You can pass the name 'testdata.csv'<br /> to your summary() function, and check the column means of the file. . You can also test your size() function by passing the testdata.csv<br />filename to it, and checking that it's working correctly, and returning the correct size. <br />
+
+## 10. Solution :Endpoint Scripting
+All the code and support files are there in the summary sub folder <br />
+#### Solution
+#### Reading the data
+Your readpandas() function can be short. It should take a filename as its only argument, and it can use the pd.read_csv() method to read a CSV into a DataFrame. It<br /> should return the DataFrame in its return statement. The whole function can be written as follows: <br />
+```
+def readpandas(filename):
+    thedata=pd.read_csv(filename)
+    return thedata
+```
+#### Size Endpoint
+Your size endpoint needs to start with `@app.get('/size/{filename}')`, which specifies the API route of your endpoint. <br />
+Then, you need a function called size() then it reads the panda dataframe and return the string length. <br />
+```
+def size(filename):
+    thedata=readpandas(filename)
+    return str(len(thedata.index))
+```
+### Summary endpoint
+Your summary endpoint needs to start with `@app.get('/summary/{filename}')`, which specifies the API route of your endpoint. <br />
+
+Then, you need a function called summary().Then, it needs to call your readpandas() function to get a pandas DataFrame of the CSV that the user specifies,Then, it <br /> needs to call your readpandas() function to get a pandas DataFrame of the CSV that the user specifies. <br />
+```
+def summary(filename):
+    thedata=readpandas(filename)
+    return str(thedata.mean(axis=1))
+```
+
+
 
 
 
